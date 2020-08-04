@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>要件 - Estimate Server</title>
+        <title>CPU - Estimate Server</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">サーバー見積もりリファレンス</a></li><li class="chapter-item expanded "><a href="chapter_1.html" class="active"><strong aria-hidden="true">1.</strong> 要件</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> 筐体</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> CPU</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> メモリ</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> ストレージ</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">サーバー見積もりリファレンス</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> 要件</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> 筐体</a></li><li class="chapter-item expanded "><a href="chapter_3.html" class="active"><strong aria-hidden="true">3.</strong> CPU</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> メモリ</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> ストレージ</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,75 +147,42 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#1-要件" id="1-要件">1. 要件</a></h1>
+                        <h1><a class="header" href="#3-cpu" id="3-cpu">3. CPU</a></h1>
 <ul>
-<li>必ず読む。</li>
-<li>必要な条件を見極める。ストレージはくどい説明を行っていないSASを選択する。</li>
+<li>「コア数」を見る。ソケットやスレッド数ではない。</li>
+<li>コア数が多いから高額というわけではない</li>
+<li>最新の世代を選択する</li>
+<li>最低クロック数に注意</li>
 </ul>
-<h2><a class="header" href="#esxi-70の要件を見てみる" id="esxi-70の要件を見てみる">ESXi 7.0の要件を見てみる</a></h2>
-<p><a href="https://docs.vmware.com/jp/VMware-vSphere/7.0/com.vmware.esxi.upgrade.doc/GUID-DEB8086A-306B-4239-BF76-E354679202FC.html" target="_blank">ESXiのハードウェア要件(esxi7.0)</a></p>
-<h3><a class="header" href="#要件抜粋" id="要件抜粋">要件抜粋</a></h3>
-<ol>
-<li><a href="https://www.vmware.com/resources/compatibility/search.php" target="_blank">VMware Compatibility Guide</a></li>
-<li>CPUは2コア以上</li>
-<li>メモリは8G以上</li>
-<li>ストレージはインストール領域だけで142GB以上</li>
-<li>vSphereの場合はVCSA分も確保すること</li>
-</ol>
-<h3><a class="header" href="#1-vmware-compatibility-guide" id="1-vmware-compatibility-guide">1. VMware Compatibility Guide</a></h3>
-<p><a href="https://www.vmware.com/resources/compatibility/search.php" target="_blank">リンク</a></p>
-<p>例としてDell R6515を指定して検索すると7.0, 6.7u3, 6.5u3にヒットする</p>
+<h2><a class="header" href="#コア数を見るソケットやスレッド数ではない" id="コア数を見るソケットやスレッド数ではない">「コア数」を見る。ソケットやスレッド数ではない。</a></h2>
 <ul>
-<li>検索ヒットすれば、CPUのIntel VT/AMD RViやNX/XDビットなどの細かなハードウェア仕様はクリアできている</li>
-<li>検索ヒットしない場合は動作に支障があるということ。他のハードウェアを選定すべき</li>
+<li>ソケット数を1にしてコストを下げること</li>
+<li>スレッド数はCPU数としてカウントしてはいけない。おまけ機能と認識すること。</li>
 </ul>
-<h3><a class="header" href="#2-cpuは2コア以上" id="2-cpuは2コア以上">2. CPUは2コア以上</a></h3>
-<ul>
-<li>2ソケットや2スレッドではない</li>
-<li>ゲストOS要件で最低クロック数を指定している場合がある</li>
-</ul>
-<h3><a class="header" href="#3-メモリは8g以上" id="3-メモリは8g以上">3. メモリは8G以上</a></h3>
-<ul>
-<li>ハイパーバイザー分だけで8GB確保すること</li>
-<li>ゲストOSの必要メモリを積み上げること</li>
-<li>メモリ共有機能に期待しないこと</li>
-</ul>
-<h3><a class="header" href="#4-ストレージはインストール領域だけで142gb以上" id="4-ストレージはインストール領域だけで142gb以上">4. ストレージはインストール領域だけで142GB以上</a></h3>
-<ul>
-<li>くどい説明を行っていないSASを選択する</li>
-</ul>
-<h3><a class="header" href="#5-vsphereの場合はvcsa分も確保すること" id="5-vsphereの場合はvcsa分も確保すること">5. vSphereの場合はVCSA分も確保すること</a></h3>
-<p><a href="https://docs.vmware.com/jp/VMware-vSphere/7.0/com.vmware.vcenter.upgrade.doc/GUID-752FCA83-1A9B-499E-9C65-D5625351C0B5.html" target="_blank">vCenter Serverアプライアンスのシステム要件</a></p>
-<h2><a class="header" href="#redhat-kvmの要件を見てみる" id="redhat-kvmの要件を見てみる">RedHat KVMの要件を見てみる</a></h2>
-<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-system_requirements-kvm_requirements" target="_blank">KVM Hypervisor Requirements</a></p>
-<h3><a class="header" href="#要件抜粋-1" id="要件抜粋-1">要件抜粋</a></h3>
-<ul>
-<li>Intel VT/AMD RVi対応のみ</li>
-</ul>
-<p>実際にはESXiと同じ要件で選出</p>
-<h2><a class="header" href="#hyper-vの要件を見てみる" id="hyper-vの要件を見てみる">Hyper-Vの要件を見てみる</a></h2>
-<p><a href="https://docs.microsoft.com/ja-jp/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows" target="_blank">Windows Server状のHyper-Vシステム要件</a></p>
-<h3><a class="header" href="#要件抜粋-2" id="要件抜粋-2">要件抜粋</a></h3>
-<ul>
-<li>機械翻訳で何言ってるかわからねぇ</li>
-<li>英語のリンクを読んでも本質的なことが書かれていないのでまたわからねぇ</li>
-</ul>
-<p>実際にはESXiと同じ要件で選出<br />
-ただし、物理サーバーへWindows Serverをインストールして使用する場合はWindows Serverの要件分を追加する。<br />
-<a href="https://docs.microsoft.com/ja-jp/windows-server/get-started-19/sys-reqs-19" target="_blank">Winmdows Server 2019 システム要件</a></p>
+<h2><a class="header" href="#コア数が多いから高額というわけではない" id="コア数が多いから高額というわけではない">コア数が多いから高額というわけではない</a></h2>
+<p>コア数が多いから高額というわけではない。低スペックで高額な場合や、「構成ガイド」にあるのにWebページで選択できないものもあり。見積もりをもらうまで割安なCPUはわからない。時間がある場合は複数指定して見積もる。</p>
+<h2><a class="header" href="#最新の世代を選択する" id="最新の世代を選択する">最新の世代を選択する</a></h2>
+<p>同一クロック、同一コア数でも世代が変わると~20%性能が向上するので、なるべく最新の世代を選択する<br />
+いまどの世代なのかは、メーカーのページよりWikipediaのほうが見やすい</p>
+<p><a href="https://ja.wikipedia.org/wiki/Xeon" target="_blank">Wikipedia Xeon</a><br />
+Copper Lake サーバ用プロセッサ 2020年6月18日発表</p>
+<p><a href="https://ja.wikipedia.org/wiki/EPYC" target="_blank">Wikipedia EPYC</a><br />
+第二世代　サーバ向け(Rome)</p>
+<h2><a class="header" href="#最低クロック数に注意" id="最低クロック数に注意">最低クロック数に注意</a></h2>
+<p>ゲストOSの要件に2.00GHz以上のクロック数などと書かれていることがある</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="title.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="chapter_2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="chapter_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="chapter_4.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -227,13 +194,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="title.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="chapter_2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="chapter_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="chapter_4.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -241,21 +208,6 @@
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

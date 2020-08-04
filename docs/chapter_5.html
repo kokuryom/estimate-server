@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>メモリ - Estimate Server</title>
+        <title>ストレージ - Estimate Server</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">サーバー見積もりリファレンス</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> 要件</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> 筐体</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> CPU</a></li><li class="chapter-item expanded "><a href="chapter_4.html" class="active"><strong aria-hidden="true">4.</strong> メモリ</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> ストレージ</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">サーバー見積もりリファレンス</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> 要件</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> 筐体</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> CPU</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> メモリ</a></li><li class="chapter-item expanded "><a href="chapter_5.html" class="active"><strong aria-hidden="true">5.</strong> ストレージ</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,38 +147,38 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#4-メモリ" id="4-メモリ">4. メモリ</a></h1>
+                        <h1><a class="header" href="#5ストレージ" id="5ストレージ">5．ストレージ</a></h1>
 <ul>
-<li>少し高額になっても2枚以上の偶数枚をチャネルを分けて構成する</li>
-<li>32GBモジュールが割安, 8GBはとても割高</li>
-<li>DDR4-2666とDDR4-3200、CPUに合うのはどっち？</li>
+<li>SAS10000rpm HDDで3-4台のハードウェアRAID5構成にする。</li>
+<li>RAIDカードのスペックをよく読み、hotswapハードウェアRAID 0,1,5サポートでキャッシュ1Mバイトを選択。</li>
+<li>Boot Optimizedストレージ（Dellのブート用SSDで10万+）、SD CARDブート、USBブート等メリットないので外す</li>
 </ul>
-<h2><a class="header" href="#少し高額になっても2枚以上の偶数枚をチャネルを分けて構成する" id="少し高額になっても2枚以上の偶数枚をチャネルを分けて構成する">少し高額になっても2枚以上の偶数枚をチャネルを分けて構成する</a></h2>
-<p><a href="https://ja.wikipedia.org/wiki/Xeon" target="_blank">Wikipedia Xeon</a><br />
-Copper Lakeで6チャネルをサポート</p>
-<p><a href="https://ja.wikipedia.org/wiki/EPYC" target="_blank">Wikipedia EPYC</a><br />
-Romeで8チャネルサポート</p>
-<p>入札は価格重視なので、パフォーマンス問題が気にならないのであれば１チャネルのみ実装もあり得る。ただし、導入後にパフォーマンス問題になる可能性が高い。枚数を変更しても見積もりを取るとあまり金額が変わらないケースはある。</p>
-<h2><a class="header" href="#32gbモジュールが割安-8gbはとても割高" id="32gbモジュールが割安-8gbはとても割高">32GBモジュールが割安, 8GBはとても割高</a></h2>
-<p>2020年現在、16GBモジュールが32GBの次に割安なので、16GBで構成する<br />
-48GB必要、という場合はとても難しい。8GB 6枚より16GB 3枚のほうが明らかに安い</p>
-<h2><a class="header" href="#ddr4-2666とddr4-3200cpuに合うのはどっち" id="ddr4-2666とddr4-3200cpuに合うのはどっち">DDR4-2666とDDR4-3200、CPUに合うのはどっち？</a></h2>
-<p>DDR4-2666よりDDR4-3200のほうが高性能で少し価格が高いが、第一世代EPYCでは2666以上のクロックのものを取り付けても意味がない。</p>
+<h2><a class="header" href="#sas10000rpm-hddで3-4台のハードウェアraid5構成にする" id="sas10000rpm-hddで3-4台のハードウェアraid5構成にする">SAS10000rpm HDDで3-4台のハードウェアRAID5構成にする。</a></h2>
+<p>唯一の可動パーツであるHDDは壊れやすい。RAID構成で容量とパフォーマンスを稼げるRAID5がおすすめ</p>
+<ul>
+<li>要件に15000RPMと書いてなければSAS15000rpmは必要ない。</li>
+<li>NL SASやSATAは1年保守しか契約できなかったり、著しくパフォーマンスが低下するので避ける</li>
+<li>M.2は2020年現在は割高</li>
+</ul>
+<h2><a class="header" href="#raidカードのスペックをよく読みhotswapハードウェアraid-015サポートでキャッシュ1mバイトを選択" id="raidカードのスペックをよく読みhotswapハードウェアraid-015サポートでキャッシュ1mバイトを選択">RAIDカードのスペックをよく読み、hotswapハードウェアRAID 0,1,5サポートでキャッシュ1Mバイトを選択。</a></h2>
+<ul>
+<li>構成ガイドで確認する</li>
+</ul>
+<h2><a class="header" href="#boot-optimizedストレージdellのブート用ssdで10万sd-cardブートusbブート等メリットないので外す" id="boot-optimizedストレージdellのブート用ssdで10万sd-cardブートusbブート等メリットないので外す">Boot Optimizedストレージ（Dellのブート用SSDで10万+）、SD CARDブート、USBブート等メリットないので外す</a></h2>
+<ul>
+<li>見積もりのWebサイトなどでデフォルトでBoot Optimizedストレージが選択されていたりするが必ず外すこと。</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="chapter_3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="chapter_4.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="chapter_5.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -188,35 +188,16 @@ Romeで8チャネルサポート</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="chapter_3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="chapter_4.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="chapter_5.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                
             </nav>
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

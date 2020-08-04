@@ -7,3 +7,4 @@ title = "Estimate Server"
 
 [build]
 create-missing = false
+build-dir = "./docs"
