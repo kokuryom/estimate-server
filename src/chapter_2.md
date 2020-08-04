@@ -7,7 +7,7 @@
 * 2.5インチベイのものを選択する。3.5インチは下火、種類が少ない、条件に合致しない。
 
 ## 構成ガイドを見よ
-<a href="https://www.hpe.com/content/dam/hpe/shared-publishing/images-norend/jp/pdf/system/servers/dl361gen10.pdf" target="_blank">DL360 Gen10</a>  
+<a href="https://www.hpe.com/content/dam/hpe/shared-publishing/images-norend/jp/pdf/system/servers/dl360gen10.pdf" target="_blank">DL360 Gen10</a>  
 <a href="https://japancatalog.dell.com/c/wp-content/uploads/PER6515configguide.pdf" target="_blank">Dell R6515</a>  
 
 * 客先に合った奥行きを必ずチェック
