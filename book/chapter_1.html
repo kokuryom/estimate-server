@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>要件 - Estimate Server</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title.html">サーバー見積もりリファレンス</a></li><li class="chapter-item expanded "><a href="chapter_1.html" class="active"><strong aria-hidden="true">1.</strong> 要件</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">2.</strong> 筐体</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">3.</strong> CPU</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">4.</strong> メモリ</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">5.</strong> ストレージ</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Estimate Server</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#1-要件" id="1-要件">1. 要件</a></h1>
+<ul>
+<li>必ず読む。</li>
+<li>必要な条件を見極める。ストレージはくどい説明を行っていないSASを選択する。</li>
+</ul>
+<h2><a class="header" href="#esxi-70の要件を見てみる" id="esxi-70の要件を見てみる">ESXi 7.0の要件を見てみる</a></h2>
+<p><a href="https://docs.vmware.com/jp/VMware-vSphere/7.0/com.vmware.esxi.upgrade.doc/GUID-DEB8086A-306B-4239-BF76-E354679202FC.html" target="_blank">ESXiのハードウェア要件(esxi7.0)</a></p>
+<h3><a class="header" href="#要件抜粋" id="要件抜粋">要件抜粋</a></h3>
+<ol>
+<li><a href="https://www.vmware.com/resources/compatibility/search.php" target="_blank">VMware Compatibility Guide</a></li>
+<li>CPUは2コア以上</li>
+<li>メモリは8G以上</li>
+<li>ストレージはインストール領域だけで142GB以上</li>
+<li>vSphereの場合はVCSA分も確保すること</li>
+</ol>
+<h3><a class="header" href="#1-vmware-compatibility-guide" id="1-vmware-compatibility-guide">1. VMware Compatibility Guide</a></h3>
+<p><a href="https://www.vmware.com/resources/compatibility/search.php" target="_blank">リンク</a></p>
+<p>例としてDell R6515を指定して検索すると7.0, 6.7u3, 6.5u3にヒットする</p>
+<ul>
+<li>検索ヒットすれば、CPUのIntel VT/AMD RViやNX/XDビットなどの細かなハードウェア仕様はクリアできている</li>
+<li>検索ヒットしない場合は動作に支障があるということ。他のハードウェアを選定すべき</li>
+</ul>
+<h3><a class="header" href="#2-cpuは2コア以上" id="2-cpuは2コア以上">2. CPUは2コア以上</a></h3>
+<ul>
+<li>2ソケットや2スレッドではない</li>
+<li>ゲストOS要件で最低クロック数を指定している場合がある</li>
+</ul>
+<h3><a class="header" href="#3-メモリは8g以上" id="3-メモリは8g以上">3. メモリは8G以上</a></h3>
+<ul>
+<li>ハイパーバイザー分だけで8GB確保すること</li>
+<li>ゲストOSの必要メモリを積み上げること</li>
+<li>メモリ共有機能に期待しないこと</li>
+</ul>
+<h3><a class="header" href="#4-ストレージはインストール領域だけで142gb以上" id="4-ストレージはインストール領域だけで142gb以上">4. ストレージはインストール領域だけで142GB以上</a></h3>
+<ul>
+<li>くどい説明を行っていないSASを選択する</li>
+</ul>
+<h3><a class="header" href="#5-vsphereの場合はvcsa分も確保すること" id="5-vsphereの場合はvcsa分も確保すること">5. vSphereの場合はVCSA分も確保すること</a></h3>
+<p><a href="https://docs.vmware.com/jp/VMware-vSphere/7.0/com.vmware.vcenter.upgrade.doc/GUID-752FCA83-1A9B-499E-9C65-D5625351C0B5.html" target="_blank">vCenter Serverアプライアンスのシステム要件</a></p>
+<h2><a class="header" href="#redhat-kvmの要件を見てみる" id="redhat-kvmの要件を見てみる">RedHat KVMの要件を見てみる</a></h2>
+<p><a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-system_requirements-kvm_requirements" target="_blank">KVM Hypervisor Requirements</a></p>
+<h3><a class="header" href="#要件抜粋-1" id="要件抜粋-1">要件抜粋</a></h3>
+<ul>
+<li>Intel VT/AMD RVi対応のみ</li>
+</ul>
+<p>実際にはESXiと同じ要件で選出</p>
+<h2><a class="header" href="#hyper-vの要件を見てみる" id="hyper-vの要件を見てみる">Hyper-Vの要件を見てみる</a></h2>
+<p><a href="https://docs.microsoft.com/ja-jp/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows" target="_blank">Windows Server状のHyper-Vシステム要件</a></p>
+<h3><a class="header" href="#要件抜粋-2" id="要件抜粋-2">要件抜粋</a></h3>
+<ul>
+<li>機械翻訳で何言ってるかわからねぇ</li>
+<li>英語のリンクを読んでも本質的なことが書かれていないのでまたわからねぇ</li>
+</ul>
+<p>実際にはESXiと同じ要件で選出<br />
+ただし、物理サーバーへWindows Serverをインストールして使用する場合はWindows Serverの要件分を追加する。<br />
+<a href="https://docs.microsoft.com/ja-jp/windows-server/get-started-19/sys-reqs-19" target="_blank">Winmdows Server 2019 システム要件</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="title.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="chapter_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="title.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="chapter_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
