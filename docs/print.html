@@ -324,10 +324,12 @@ Copper Lakeで6チャネルをサポート</p>
 Romeで8チャネルサポート</p>
 <p>入札は価格重視なので、パフォーマンス問題が気にならないのであれば１チャネルのみ実装もあり得る。ただし、導入後にパフォーマンス問題になる可能性が高い。枚数を変更しても見積もりを取るとあまり金額が変わらないケースはある。</p>
 <h2><a class="header" href="#32gbモジュールが割安-8gbはとても割高" id="32gbモジュールが割安-8gbはとても割高">32GBモジュールが割安, 8GBはとても割高</a></h2>
-<p>2020年現在、16GBモジュールが32GBの次に割安なので、16GBで構成する<br />
+<p><a href="https://www.dell.com/ja-jp/work/shop/povw/poweredge-r6515" target="_blank">DELL R6515</a><br />
+2020年現在、16GBモジュールが32GBの次に割安なので、16GBで構成する<br />
 48GB必要、という場合はとても難しい。8GB 6枚より16GB 3枚のほうが明らかに安い</p>
 <h2><a class="header" href="#ddr4-2666とddr4-3200cpuに合うのはどっち" id="ddr4-2666とddr4-3200cpuに合うのはどっち">DDR4-2666とDDR4-3200、CPUに合うのはどっち？</a></h2>
-<p>DDR4-2666よりDDR4-3200のほうが高性能で少し価格が高いが、第一世代EPYCでは2666以上のクロックのものを取り付けても意味がない。</p>
+<p><a href="https://ja.wikipedia.org/wiki/EPYC" target="_blank">Wikipedia EPYC</a><br />
+DDR4-2666よりDDR4-3200のほうが高性能で少し価格が高いが、第一世代EPYCでは2666以上のクロックのものを取り付けても意味がない。</p>
 <h1><a class="header" href="#5ストレージ" id="5ストレージ">5．ストレージ</a></h1>
 <ul>
 <li>SAS10000rpm HDDで3-4台のハードウェアRAID5構成にする。</li>
@@ -371,6 +373,21 @@ Romeで8チャネルサポート</p>
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
